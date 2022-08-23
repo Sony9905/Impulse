@@ -1,0 +1,190 @@
+<div class="Container">
+    <header class="PageHeader">
+      <div class="SectionHeader SectionHeader--center">
+        <h1 class="SectionHeader__Heading Heading u-h1">{{ page.title }}</h1>
+      </div>
+    </header>
+  
+    <div class="PageContent">
+      {{ page.content }}
+  
+      <section id="colors" class="PageLayout PageLayout--breakLap">
+        <div class="PageLayout__Section">
+          <h2 class="Segment__Title">Colors</h2><br />
+      
+          <div class="ColorSwatch__Grid">
+            {%- assign color_labels = "Black,Gray 400,Gray 300,Gray 200,Gray 100,White" -%}
+            {%- assign color_values = "#1e1e1e,#464646,#737373,#969696,#d6d6d6,#ffffff" -%}
+            {%- assign color_labels = color_labels | split: ',' -%}
+            {%- assign color_values = color_values | split: ',' -%}
+            {%- assign length = color_labels | size | minus: 1 -%}
+            {%- for i in (0..length) -%}
+            {%- assign color_label = color_labels[i] -%}
+            {%- assign color_fill = color_values[i] -%}
+            {%- include 'styleguide-swatch' -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      </section>
+      
+      <section id="typography" class="PageLayout PageLayout--breakLap">
+        <div class="PageLayout__Section Rte">
+          <h2 class="Segment__Title">Typography</h2>
+          
+          <div class="Product"><h1 class="ProductMeta__Title Heading">This is a PDP H1</h1></div>
+          <h1>This is an H1</h1>
+          <h2>This is an H2</h2>
+          <h3>This is an H3</h3>
+          <h4>This is an H4</h4>
+          <h5>This is an H5</h5>
+          
+          <h3 class="SectionHeader__SubHeading">This is a subhead</h3>
+          
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p><a href="#">Primary Link</a></p>
+        </div>
+      </section>
+      
+      <section id="inputs" class="PageLayout PageLayout--breakLap">
+        <div class="PageLayout__Section">
+          <h2 class="Segment__Title">Checkboxes, Pagination, &amp; Filters</h2>
+          <div class="Form__Item">
+            <div class="Form__CheckboxWrapper">
+              <input type="checkbox" class="Form__Checkbox" name="address[default]" id="address-new[default]" value="0">
+              {% include 'icon' with 'checkmark' %}
+              <label for="address-new[default]">{{ 'customer.addresses.set_default' | t }}</label>
+            </div>
+          </div>
+          <div>
+            <input class="Form__Radio" type="radio" />
+            <label>Choice 1</label>
+          </div>
+          <div class="Pagination Text--subdued">
+            <div class="Pagination__Nav">
+  
+              <span class="Pagination__NavItem is-active">1</span>
+  
+              {%- for i in (2..3) -%}
+                <a href="#" class="Pagination__NavItem Link Link--primary">{{ i }}</a>
+              {%- endfor -%}
+  
+              <a class="Pagination__NavItem Link Link--primary" href="#">
+                {%- include 'icon' with 'select-arrow-right' -%}
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <section id="inputs" class="PageLayout PageLayout--breakLap">
+        <div class="PageLayout__Section">
+          <h2 class="Segment__Title">Buttons</h2>
+          <a class="Button Button--primary" href="#">Primary Btn</a>
+          <br /><br />        
+          <a class="Button Button--secondary" href="#">Secondary Btn</a>
+          <br /><br />        
+          <a class="Link Link--underline" href="#">Tertiary Btn</a>
+          <br /><br />
+        </div>
+      </section>
+      
+      <section id="inputs" class="PageLayout PageLayout--breakLap">
+        <div class="PageLayout__Section"> 
+          <h2 class="Segment__Title">Forms &amp; Alerts</h2>
+          <input class="Form__Input" type="text" placeholder="Placeholder" />    
+          <br /><br />
+          <div class="Form__Item">
+              <input type="text" class="Form__Input" name="address[city]" value="New York" placeholder="City" aria-label="City">
+              <label class="Form__FloatingLabel">City</label>
+          </div>
+          <div class="Form__Item">
+            <input type="password" class="Form__Input" name="customer[password]" required="required" placeholder="Password" aria-label="Password">
+            <label class="Form__FloatingLabel">Password</label>
+            <button type="button" class="Form__ItemHelp Link Link--primary" data-action="toggle-recover-form">Forgot password?</button>
+          </div>
+          <br />
+          <p class="Form__Alert Alert Alert--error">Error message</p>
+          <span class="ProductForm__Error Alert Alert--error">Add to Cart Error</span>
+          <p class="Form__Alert Alert Alert--warning">Warning message</p>
+          <p class="Form__Alert Alert Alert--success">Success message</p>
+        </div>
+      </section>
+  
+      {% comment %} <section id="inputs" class="PageLayout PageLayout--breakLap">
+        <div class="PageLayout__Section"> 
+          <h2 class="Segment__Title">Icons</h2>
+          {%- include 'icon' with 'logo' -%}
+          <div class="Icon__StyleGuideGrid">
+            <div class="scroll-arrow">
+              <a href="#grid">
+                <!-- use svg file if possible -->
+                <img class="pointer" src="{{ 'BowlerHat.png' | asset_url }}" />
+                <div class="point-gradient gradient-glow"></div>
+              </a>
+            </div>
+            {%- include 'icon' with 'rg-traveler' -%}
+            {%- include 'icon' with 'rg-store-locator' -%}
+            {%- include 'icon' with 'rg-hat' -%}
+            {%- include 'icon' with 'rg-artist' -%}
+          </div>
+          <div class="Icon__StyleGuideGrid">
+            {{ 'BowlerHatBackground.svg' | asset_url | img_tag }}
+            {{ 'HighHatBackground.svg' | asset_url | img_tag }}
+            {{ 'TheArtistBackground.svg' | asset_url | img_tag }}
+          </div>
+          <div class="Icon__StyleGuideGrid">
+            {{ 'BowlerHat.svg' | asset_url | img_tag }}
+            {{ 'HighHat.svg' | asset_url | img_tag }}
+            {{ 'TheArtist.svg' | asset_url | img_tag }}
+            {{ 'NoTies.svg' | asset_url | img_tag }}
+            {{ 'TheTraveler.svg' | asset_url | img_tag }}
+            {{ 'StoreLocator.svg' | asset_url | img_tag }}
+          </div>
+          <div class="Icon__StyleGuideGrid">
+            {%- include 'icon' with 'facebook' -%}
+            {%- include 'icon' with 'instagram' -%}
+            {%- include 'icon' with 'account' -%}
+            {%- include 'icon' with 'arrow' -%}
+            {%- include 'icon' with 'arrow-carousel' -%}
+            {%- include 'icon' with 'cart' -%}
+            {%- include 'icon' with 'close' -%}
+            {%- include 'icon' with 'color-strikethrough' -%}
+            {%- include 'icon' with 'size-strikethrough' -%}
+            {%- include 'icon' with 'marker' -%}
+            {%- include 'icon' with 'menu' -%}
+            {%- include 'icon' with 'plus' -%}
+            {%- include 'icon' with 'minus' -%}
+            {%- include 'icon' with 'search' -%}
+            {%- include 'icon' with 'star' -%}
+            {%- include 'icon' with 'wishlist' -%}
+          </div>
+        </div>
+      </section> {% endcomment %}
+    </div>
+  </div>
+  
+  <style>
+  .ColorSwatch__Grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;  
+  }
+  .StyleguideSwatch {
+    background-color: #fff;
+    width: 100px;
+    margin: 10px;
+    box-shadow: 0 2px 2px rgba(#484848, 0.15);
+  }
+  .StyleguideSwatch .StyleguideSwatch__Fill {
+    height: 100px;
+    width: 100%;
+  }
+  .StyleguideSwatch p {
+    padding-left: 5px;
+    margin-bottom: 0;
+    line-height: 1.5;
+  }
+  .StyleguideSwatch p:first-of-type {
+    font-weight: bold;
+  }
+  </style>
